@@ -176,10 +176,7 @@
       deleteList.remove();
     }
     hideFirstUl();
-
-
-
-    /* ESERCIZIO 8 
+     /* ESERCIZIO 8 
      Scrivi una funzione che renda verde il background di ogni lista non ordinata
     */
 
@@ -222,92 +219,48 @@
      Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
      La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
   */
-    const tabLe = [
-      {
-        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQvvuel55PXMkfGeDD6krE9OR3pbjOtof5g&s',
-        nomeProdotto: 'caffe',
-        quantità: '3',
-        prezzo: '€ 30'
-      },
-      {
-        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTccCIeh399lRmLzQSKEw46Bf5sYhn0PRDWzg&s',
-        nomeProdotto: 'vino',
-        quantità: '8',
-        prezzo: '€ 45'
-      },
-      {
-        immagine: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Export_hell_seidel_steiner.png',
-        nomeProdotto: 'birra',
-        quantità: '10',
-        prezzo: '€ 38'
-      },
-      {
-        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gQa1d6ztMeOLCtjHKB3cJ6HObZnB1uj-_A&s',
-        nomeProdotto: 'succo',
-        quantità: '17',
-        prezzo: '€ 5'
-      },
-      {
-        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR00gN5ZTxxJBkz8fVENuOWS69JKfCx-q1NrA&s',
-        nomeProdotto: 'bibite',
-        quantità: '20',
-        prezzo: '€ 7'
-      },
-    ];
-    console.log(tabLe);
-    const generateTable = function () {
-      //Elementi generali
+
+    console.log('***Esercizio11***');
+    const generateTable = function () { 
       const tableContainer = document.getElementById('tableArea');
-      const myTable = document.createElement('table');
-      const tableHead = document.createElement('thead');
-      const tableBody = document.createElement('tbody');
+      const table = document.createElement('table');
+      table.border = '1';
 
-      //Intestazione della tabella
-      const headImg = document.createElement('th');
-      const headProduct = document.createElement('th');
-      const headQty = document.createElement('th');
-      const headPrice = document.createElement('th');
-      const headRow = document.createElement('tr');
-
-      headImg.innerText = 'Immagine';
-      headProduct.innerText = 'Nome Prodotto';
-      headQty.innerText = 'Quantità';
-      headPrice.innerText = 'Prezzo';
-     
-      //appendChild-appendo il contenuto
-     headRow.appendChild(headImg);
-     headRow.appendChild(headProduct);
-     headRow.appendChild(headQty);
-     headRow.appendChild(headPrice);
-
-     tableHead.appendChild(headRow);
-     myTable.appendChild(tableHead);
-
-     //contenuto tabella
-     for(let i = 0; i < tabLe.length; i++){
-      const newRow = document.createElement('tr');
-      const cellImg = document.createElement('td');
-      const cellProduct = document.createElement('td');
-      const cellQty = document.createElement('td');
-      const cellPrice = document.createElement('td');
-      const imgProd = document.createElement('img');
-
-      ImgProd.setAttribute('src', tabLe[i].immagine);
-      cellImg.appendChild(imgProd);
-      cellProduct.innerText = tabLe[i].nomeProdotto;
-      cellQty.innerText = tabLe[i].quantità;
-      cellPrice.innerText = tabLe[i].prezzo;
-
-      newRow.appendChild(cellImg);
-      newRow.appendChild(cellProduct);
-      newRow.appendChild(cellQty);
-      newRow.appendChild(cellPrice);
-
-      tableBody.appendChild(newRow);
-     }
-
-     myTable.appendChild(tableBody);
-     tableContainer.appendChild(myTable);
+      //intestazione della tabella
+      const tableHeader = table.createTHead();
+      const headerRow = tableHeader.insertRow();
+      const headers = ['Immagine', 'Nome prodotto', 'Quantità', 'Prezzo'];
+      headers.forEach(text =>{
+        const th = document.createElement('th');
+        th.innerText = text;
+        headerRow.appendChild(th);
+      });
+      //Il tbody
+      const tbody = document.createElement('tbody');
+      const dati = [
+        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjE4na3puvvAxcQheJnOaQOuuU16H2v-SASQ&s', 'Chianti', '15','€ 25'],
+        ['https://enotecaproperzio.gumlet.io/media/catalog/product/cache/2/image/400x600/9df78eab33525d08d6e5fb8d27136e95/1/e/dba40bcd28d62297bd5639f09abd977f/chardonnay-arnaldo-caprai-2021-0-75-lt.png', 'Chardonnay', '20', '€ 16'],
+        ['https://th.wine-now.asia/media/catalog/product/cache/5836d291b7d5a67e34f92ee32ee5d955/w/s/wsp1164ac_1.jpg', 'Prosecco', '40','€ 9'],
+        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsM_8yMiKVBvTbnTTdVsyYPmDfL0ERQoarBA&s','Cerasuolo' , '18', '€ 15'],
+        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOlZSlVO5RnglJ6XRDySovYciyvGQPqelB9g&s','Montepulciano', '35','€ 14'],
+      ];
+      dati.forEach(rowData => {
+        const row = tbody.insertRow();
+        rowData.forEach((cellData, index) =>{
+          const cell = row.insertCell();
+          if(index === 0){
+            const img = document.createElement('img');
+            img.src = cellData;
+            img.alt = 'Immagine vini';
+            img.width = 50;
+            cell.appendChild(img);
+          }else{
+            cell.innerText = cellData;
+          }
+        });
+      });
+      table.appendChild(tbody);
+      tableContainer.appendChild(table);
     }
     generateTable();
 
