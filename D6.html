@@ -31,6 +31,10 @@
     .myHeading {
       color: #ff00d6;
     }
+
+    .pointer {
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -41,7 +45,7 @@
   </div>
 
   <div>
-    <hr/>
+    <hr />
 
     <ul id="firstList">
       <li>1st</li>
@@ -68,10 +72,10 @@
       Apri questa pagina con VSCode per scoprire gli esercizi
     </h2>
   </div>
-
+  <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
   <div id="tableArea"></div>
 
-  <footer>
+  <footer class="pointer">
     <h3>
       DOM Manipulation is super
       <a
@@ -86,9 +90,10 @@
     const changeTitle = function () {
       const newTitle = document.querySelector('h1');
       console.log(newTitle);
-      newTitle.textContent = 'Nuovo Titolo';
+      newTitle.innerText = 'Nuovo Titolo';
     }
     changeTitle();
+
 
 
 
@@ -96,7 +101,7 @@
      Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
   */
 
-  console.log('*****Esercizio2****');
+    console.log('*****Esercizio2****');
     const addClassToTitle = function () {
       const newTitle = document.querySelector('h1');
       newTitle.classList.add('myHeading');
@@ -106,61 +111,71 @@
     /* ESERCIZIO 3
      Scrivi una funzione che cambi il testo dei p figli di un div
     */
-    console.log('*****Esercizio3****');
-   const changeP = function(){
-    const newP = document.querySelectorAll('div p');
-    newP.forEach (item => {
-      item.style.color = 'red';
-    })
-   }
-   changeP();
+    console.log('*****Esercizio3.1****');
+    const changeP = function () {
+      const newP = document.querySelectorAll('div p');
+      newP.forEach(item => {
+        item.style.color = 'red';
+      })
+    }
+    changeP();
 
-    
+    console.log('*****Esercizio3.2****');
+    const changePcontent = function () {
+      const newP = document.querySelectorAll('div p');
+      newP.forEach((element, index) => {
+        element.innerText = `text change ${index + 1}`;
+      });
+    }
+    changePcontent();
+
+
     /* ESERCIZIO 4
      Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
     */
     console.log('*****Esercizio4****');
     const changeUrls = function () {
-      const link = document.querySelector('a');
-      const changeLink = link.getAttribute('href');
-      link.setAttribute('href', 'https://www.google.com');
-     }
-     changeUrls();
+      const link = document.querySelectorAll('a:not(footer a)');
+      link.forEach(element => {
+        element.setAttribute('href', 'https://www.google.com');
+      });
+    };
+    changeUrls();
 
     /* ESERCIZIO 5
      Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
 
   */
-  console.log('*****Esercizio5****');
+    console.log('*****Esercizio5****');
     const addToTheSecond = function () {
       const newListelement = document.getElementById('secondList');
       const paraGrafo = document.createElement('li');
-      paraGrafo.textContent = '4-th';
+      paraGrafo.innerText = '4-th';
       secondList.appendChild(paraGrafo);
-      }
+    }
     addToTheSecond();
     /* ESERCIZIO 6
      Scrivi una funzione che aggiunga un paragrafo al primo div
   */
-    
-  console.log('*****Esercizio6****');
-      const addParagraph = function () { 
-      const div = document.querySelector('div');
+
+    console.log('*****Esercizio6****');
+    const addParagraph = function () {
+      const divAdd = document.querySelector('div');
       const paragrafo = document.createElement('p');
-      paragrafo.textContent = 'Questo e un nuovo paragrafo';
-      div.appendChild(paragrafo);
-      }
-     addParagraph();
-     
+      paragrafo.innerText = 'Questo e un nuovo paragrafo';
+      divAdd.appendChild(paragrafo);
+    };
+    addParagraph();
+
     /* ESERCIZIO 7
      Scrivi una funzione che faccia scomparire la prima lista non ordinata
   */
-  console.log('*****Esercizio7****');
+    console.log('*****Esercizio7****');
     const hideFirstUl = function () {
       const deleteList = document.getElementById('firstList');
       deleteList.remove();
-     }
-     hideFirstUl();
+    }
+    hideFirstUl();
 
 
 
@@ -170,11 +185,11 @@
 
     console.log('*****Esercizio8****');
     const paintItGreen = function () {
-      const colorList = document.querySelectorAll('ul li');
-     colorList.forEach (item => {
-      item.style.backgroundColor = 'green';
-    })
-   }
+      const colorList = document.querySelectorAll('ul');
+      colorList.forEach(item => {
+        item.style.backgroundColor = 'green';
+      })
+    }
     paintItGreen();
 
     /* ESERCIZIO 9
@@ -182,57 +197,119 @@
     */
     console.log('*****Esercizio9****');
     const makeItClickable = function () {
-
-     }
+      const newTitle = document.querySelector('h1');
+      newTitle.addEventListener('click', function () {
+        newTitle.innerText = newTitle.innerText.slice(0, -1);
+      });
+    }
+    makeItClickable();
 
     /* ESERCIZIO 10
      Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
     */
 
-    const revealFooterLink = function () { 
-
-    }
+    const revealFooterLink = function () {
+      const myFooter = document.querySelector('footer');
+      myFooter.classList.add('pointer');
+      myFooter.onclick = () => {
+        const footerLink = document.querySelector('footer a').getAttribute('href');
+        alert(footerLink);
+      };
+    };
+    revealFooterLink();
 
     /* ESERCIZIO 11
      Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
      La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
   */
-   const tabLe =[
-    {
-   immagine: 'img',
-   nomeProdotto: 'caffe',
-   quantità: '3',
-   prezzo: '30'
-    },
-    {
-   immagine: 'img',
-   nomeProdotto: 'vino',
-   quantità: '8',
-   prezzo: '45'
-    },
-    {
-   immagine: 'img',
-   nomeProdotto: 'birra',
-   quantità: '10',
-   prezzo: '38'
-    },
-    {
-   immagine: 'img',
-   nomeProdotto: 'succo',
-   quantità: '17',
-   prezzo: '5'
-    },
-    {
-   immagine: 'img',
-   nomeProdotto: 'bibite',
-   quantità: '20',
-   prezzo: '7'
-    },
-  ];
-  console.log(tabLe);
-    const generateTable = function () { 
+    const tabLe = [
+      {
+        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQvvuel55PXMkfGeDD6krE9OR3pbjOtof5g&s',
+        nomeProdotto: 'caffe',
+        quantità: '3',
+        prezzo: '€ 30'
+      },
+      {
+        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTccCIeh399lRmLzQSKEw46Bf5sYhn0PRDWzg&s',
+        nomeProdotto: 'vino',
+        quantità: '8',
+        prezzo: '€ 45'
+      },
+      {
+        immagine: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Export_hell_seidel_steiner.png',
+        nomeProdotto: 'birra',
+        quantità: '10',
+        prezzo: '€ 38'
+      },
+      {
+        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gQa1d6ztMeOLCtjHKB3cJ6HObZnB1uj-_A&s',
+        nomeProdotto: 'succo',
+        quantità: '17',
+        prezzo: '€ 5'
+      },
+      {
+        immagine: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR00gN5ZTxxJBkz8fVENuOWS69JKfCx-q1NrA&s',
+        nomeProdotto: 'bibite',
+        quantità: '20',
+        prezzo: '€ 7'
+      },
+    ];
+    console.log(tabLe);
+    const generateTable = function () {
+      //Elementi generali
+      const tableContainer = document.getElementById('tableArea');
+      const myTable = document.createElement('table');
+      const tableHead = document.createElement('thead');
+      const tableBody = document.createElement('tbody');
 
+      //Intestazione della tabella
+      const headImg = document.createElement('th');
+      const headProduct = document.createElement('th');
+      const headQty = document.createElement('th');
+      const headPrice = document.createElement('th');
+      const headRow = document.createElement('tr');
+
+      headImg.innerText = 'Immagine';
+      headProduct.innerText = 'Nome Prodotto';
+      headQty.innerText = 'Quantità';
+      headPrice.innerText = 'Prezzo';
+     
+      //appendChild-appendo il contenuto
+     headRow.appendChild(headImg);
+     headRow.appendChild(headProduct);
+     headRow.appendChild(headQty);
+     headRow.appendChild(headPrice);
+
+     tableHead.appendChild(headRow);
+     myTable.appendChild(tableHead);
+
+     //contenuto tabella
+     for(let i = 0; i < tabLe.length; i++){
+      const newRow = document.createElement('tr');
+      const cellImg = document.createElement('td');
+      const cellProduct = document.createElement('td');
+      const cellQty = document.createElement('td');
+      const cellPrice = document.createElement('td');
+      const imgProd = document.createElement('img');
+
+      ImgProd.setAttribute('src', tabLe[i].immagine);
+      cellImg.appendChild(imgProd);
+      cellProduct.innerText = tabLe[i].nomeProdotto;
+      cellQty.innerText = tabLe[i].quantità;
+      cellPrice.innerText = tabLe[i].prezzo;
+
+      newRow.appendChild(cellImg);
+      newRow.appendChild(cellProduct);
+      newRow.appendChild(cellQty);
+      newRow.appendChild(cellPrice);
+
+      tableBody.appendChild(newRow);
+     }
+
+     myTable.appendChild(tableBody);
+     tableContainer.appendChild(myTable);
     }
+    generateTable();
 
     /* ESERCIZIO 12
      Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
