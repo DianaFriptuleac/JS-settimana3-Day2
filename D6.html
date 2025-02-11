@@ -1,287 +1,352 @@
 <!DOCTYPE html>
 <html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+      body {
+        margin: 0;
+      }
 
-    body {
-      margin: 0;
-    }
+      body div,
+      footer {
+        padding: 1rem;
+      }
 
-    body div,
-    footer {
-      padding: 1rem;
-    }
+      footer {
+        padding: 1rem;
+        background-color: black;
+        color: white;
+      }
 
-    footer {
-      padding: 1rem;
-      background-color: black;
-      color: white;
-    }
+      .myHeading {
+        color: #ff00d6;
+      }
+    </style>
+  </head>
 
-    .myHeading {
-      color: #ff00d6;
-    }
-
-    .pointer {
-      cursor: pointer;
-    }
-  </style>
-</head>
-
-<body>
-  <div>
-    <h1>Questo è il titolo della pagina</h1>
-    <h2>Questo è il sottotitolo della pagina</h2>
-  </div>
-
-  <div>
-    <hr />
-
-    <ul id="firstList">
-      <li>1st</li>
-      <li>2nd</li>
-      <li>3rd</li>
-    </ul>
-
-    <ul id="secondList">
-      <li>1st</li>
-      <li>2nd</li>
-      <li>3rd</li>
-    </ul>
-
-    <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
+  <body>
+    <div>
+      <h1>Questo è il titolo della pagina</h1>
+      <h2>Questo è il sottotitolo della pagina</h2>
+    </div>
 
     <div>
-      <p>Questo testo è un placeholder per gli esercizi</p>
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
+
+      <div>
+        <p>Questo testo è un placeholder per gli esercizi</p>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <p>Anche questo testo è per gli esercizi</p>
-    <h2 id="changeMyColor" style="color: #ff00d6">
-      Apri questa pagina con VSCode per scoprire gli esercizi
-    </h2>
-  </div>
-  <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
-  <div id="tableArea"></div>
+    <div>
+      <p>Anche questo testo è per gli esercizi</p>
+      <h2 id="changeMyColor" style="color: #ff00d6">
+        Apri questa pagina con VSCode per scoprire gli esercizi
+      </h2>
+    </div>
 
-  <footer class="pointer">
-    <h3>
-      DOM Manipulation is super
-      <a
-        href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents">AWESOME!</a>
-    </h3>
-  </footer>
-  <script>
-    /* ESERCIZIO 1
-     Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
-  */
-    console.log('*****Esercizio1****');
-    const changeTitle = function () {
-      const newTitle = document.querySelector('h1');
-      console.log(newTitle);
-      newTitle.innerText = 'Nuovo Titolo';
-    }
-    changeTitle();
+    <div id="tableArea"></div>
 
-
-
-
-    /* ESERCIZIO 2
-     Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
-  */
-
-    console.log('*****Esercizio2****');
-    const addClassToTitle = function () {
-      const newTitle = document.querySelector('h1');
-      newTitle.classList.add('myHeading');
-    }
-    addClassToTitle();
-
-    /* ESERCIZIO 3
-     Scrivi una funzione che cambi il testo dei p figli di un div
-    */
-    console.log('*****Esercizio3.1****');
-    const changeP = function () {
-      const newP = document.querySelectorAll('div p');
-      newP.forEach(item => {
-        item.style.color = 'red';
-      })
-    }
-    changeP();
-
-    console.log('*****Esercizio3.2****');
-    const changePcontent = function () {
-      const newP = document.querySelectorAll('div p');
-      newP.forEach((element, index) => {
-        element.innerText = `text change ${index + 1}`;
-      });
-    }
-    changePcontent();
-
-
-    /* ESERCIZIO 4
-     Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
-    */
-    console.log('*****Esercizio4****');
-    const changeUrls = function () {
-      const link = document.querySelectorAll('a:not(footer a)');
-      link.forEach(element => {
-        element.setAttribute('href', 'https://www.google.com');
-      });
-    };
-    changeUrls();
-
-    /* ESERCIZIO 5
-     Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
-
-  */
-    console.log('*****Esercizio5****');
-    const addToTheSecond = function () {
-      const newListelement = document.getElementById('secondList');
-      const paraGrafo = document.createElement('li');
-      paraGrafo.innerText = '4-th';
-      secondList.appendChild(paraGrafo);
-    }
-    addToTheSecond();
-    /* ESERCIZIO 6
-     Scrivi una funzione che aggiunga un paragrafo al primo div
-  */
-
-    console.log('*****Esercizio6****');
-    const addParagraph = function () {
-      const divAdd = document.querySelector('div');
-      const paragrafo = document.createElement('p');
-      paragrafo.innerText = 'Questo e un nuovo paragrafo';
-      divAdd.appendChild(paragrafo);
-    };
-    addParagraph();
-
-    /* ESERCIZIO 7
-     Scrivi una funzione che faccia scomparire la prima lista non ordinata
-  */
-    console.log('*****Esercizio7****');
-    const hideFirstUl = function () {
-      const deleteList = document.getElementById('firstList');
-      deleteList.remove();
-    }
-    hideFirstUl();
-     /* ESERCIZIO 8 
-     Scrivi una funzione che renda verde il background di ogni lista non ordinata
+    <footer>
+      <h3>
+        DOM Manipulation is super
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          >AWESOME!</a
+        >
+      </h3>
+    </footer>
+    <script>
+      /* ESERCIZIO 1
+       Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
     */
 
-    console.log('*****Esercizio8****');
-    const paintItGreen = function () {
-      const colorList = document.querySelectorAll('ul');
-      colorList.forEach(item => {
-        item.style.backgroundColor = 'green';
-      })
-    }
-    paintItGreen();
-
-    /* ESERCIZIO 9
-     Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
-    */
-    console.log('*****Esercizio9****');
-    const makeItClickable = function () {
-      const newTitle = document.querySelector('h1');
-      newTitle.addEventListener('click', function () {
-        newTitle.innerText = newTitle.innerText.slice(0, -1);
-      });
-    }
-    makeItClickable();
-
-    /* ESERCIZIO 10
-     Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
-    */
-
-    const revealFooterLink = function () {
-      const myFooter = document.querySelector('footer');
-      myFooter.classList.add('pointer');
-      myFooter.onclick = () => {
-        const footerLink = document.querySelector('footer a').getAttribute('href');
-        alert(footerLink);
+      const changeTitle = function () {
+        const newTitle = document.querySelector("h1");
+        newTitle.innerText = "New title!";
       };
-    };
-    revealFooterLink();
+      changeTitle();
 
-    /* ESERCIZIO 11
-     Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
-     La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
-  */
+      /* ESERCIZIO 2
+       Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
+    */
 
-    console.log('***Esercizio11***');
-    const generateTable = function () { 
-      const tableContainer = document.getElementById('tableArea');
-      const table = document.createElement('table');
-      table.border = '1';
+      const addClassToTitle = function () {
+        const newClass = document.querySelector("h1");
+        newClass.classList.add("myHeading");
+      };
+      addClassToTitle();
 
-      //intestazione della tabella
-      const tableHeader = table.createTHead();
-      const headerRow = tableHeader.insertRow();
-      const headers = ['Immagine', 'Nome prodotto', 'Quantità', 'Prezzo'];
-      headers.forEach(text =>{
-        const th = document.createElement('th');
-        th.innerText = text;
-        headerRow.appendChild(th);
-      });
-      //Il tbody
-      const tbody = document.createElement('tbody');
-      const dati = [
-        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjE4na3puvvAxcQheJnOaQOuuU16H2v-SASQ&s', 'Chianti', '15','€ 25'],
-        ['https://enotecaproperzio.gumlet.io/media/catalog/product/cache/2/image/400x600/9df78eab33525d08d6e5fb8d27136e95/1/e/dba40bcd28d62297bd5639f09abd977f/chardonnay-arnaldo-caprai-2021-0-75-lt.png', 'Chardonnay', '20', '€ 16'],
-        ['https://th.wine-now.asia/media/catalog/product/cache/5836d291b7d5a67e34f92ee32ee5d955/w/s/wsp1164ac_1.jpg', 'Prosecco', '40','€ 9'],
-        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsM_8yMiKVBvTbnTTdVsyYPmDfL0ERQoarBA&s','Cerasuolo' , '18', '€ 15'],
-        ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOlZSlVO5RnglJ6XRDySovYciyvGQPqelB9g&s','Montepulciano', '35','€ 14'],
-      ];
-      dati.forEach(rowData => {
-        const row = tbody.insertRow();
-        rowData.forEach((cellData, index) =>{
-          const cell = row.insertCell();
-          if(index === 0){
-            const img = document.createElement('img');
-            img.src = cellData;
-            img.alt = 'Immagine vini';
-            img.width = 50;
-            cell.appendChild(img);
-          }else{
-            cell.innerText = cellData;
-          }
+      /* ESERCIZIO 3
+       Scrivi una funzione che cambi il testo dei p figli di un div
+      */
+
+      const changePcontent = function () {
+        const newP = document.querySelectorAll("div p");
+        newP.forEach((i) => {
+          i.style.color = "red";
         });
-      });
-      table.appendChild(tbody);
-      tableContainer.appendChild(table);
-    }
-    generateTable();
+      };
 
-    /* ESERCIZIO 12
-     Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
-  */
+      changePcontent();
+      /* ESERCIZIO 4
+       Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
+      */
 
-    const addRow = function () { }
+      const changeUrls = function () {
+        const newLink = document.querySelectorAll("a:not(footer a)");
+        newLink.forEach((el) => {
+          el.setAttribute("href", "https://www.google.com");
+        });
+      };
+      changeUrls();
 
-    /* ESERCIZIO 14
-    Crea una funzione che nasconda le immagini della tabella quando eseguita
-  */
+      /* ESERCIZIO 5
+       Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
+    */
 
-    const hideAllImages = function () { }
+      const addToTheSecond = function () {
+        const newLi = document.getElementById("secondList");
+        const newEl = document.createElement("li");
+        newEl.innerText = "4-th";
+        secondList.appendChild(newEl);
+      };
+      addToTheSecond();
+      /* ESERCIZIO 6
+       Scrivi una funzione che aggiunga un paragrafo al primo div
+    */
 
-    /* EXTRA ESERCIZIO 15
-    Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
-  */
+      const addParagraph = function () {
+        const myDiv = document.querySelector("div");
+        const paragrafo = document.createElement("p");
+        paragrafo.innerText = "New paragraf";
+        myDiv.appendChild(paragrafo);
+      };
+      addParagraph();
 
-    const changeColorWithRandom = function () { }
-  </script>
-</body>
+      /* ESERCIZIO 7
+       Scrivi una funzione che faccia scomparire la prima lista non ordinata
+    */
 
+      const hideFirstUl = function () {
+        const list = document.getElementById("firstList");
+        const deleteList = list.remove();
+      };
+      hideFirstUl();
+
+      /* ESERCIZIO 8 
+       Scrivi una funzione che renda verde il background di ogni lista non ordinata
+      */
+
+      const paintItGreen = function () {
+        const allLists = document.querySelectorAll("ul");
+        allLists.forEach((i) => {
+          i.style.backgroundColor = "green";
+        });
+      };
+      paintItGreen();
+      /* ESERCIZIO 9
+       Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
+      */
+
+      const makeItClickable = function () {
+        const newTitle = document.querySelector("h1");
+        newTitle.addEventListener("click", function () {
+          newTitle.innerText = newTitle.innerText.slice(0, -1);
+        });
+      };
+      makeItClickable();
+
+      /* ESERCIZIO 10
+       Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
+      */
+
+      const revealFooterLink = function () {
+        const newFooter = document.querySelector("footer");
+        newFooter.classList.add("pointer");
+        newFooter.onclick = () => {
+          const footerVisibleLink = document
+            .querySelector("footer a ")
+            .getAttribute("href");
+          alert(footerVisibleLink);
+        };
+      };
+      revealFooterLink();
+
+      /* ESERCIZIO 11
+       Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
+       La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
+    */
+
+      const generateTable = function () {
+        const tableArea = document.getElementById("tableArea");
+        const myTable = document.createElement("table");
+        myTable.border = "1";
+
+        const tableHeader = myTable.createTHead();
+        const tableRow = tableHeader.insertRow(); // Corretto il riferimento alla riga dell'header
+
+        const headers = ["Immagine", "Nome prodotto", "Quantità", "Prezzo"];
+        headers.forEach((text) => {
+          const th = document.createElement("th");
+          th.innerText = text;
+          tableRow.appendChild(th);
+        });
+
+        // Creazione del tbody
+        const tbody = document.createElement("tbody");
+        const dati = [
+          [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjE4na3puvvAxcQheJnOaQOuuU16H2v-SASQ&s",
+            "Chianti",
+            "15",
+            "€ 25",
+          ],
+          [
+            "https://enotecaproperzio.gumlet.io/media/catalog/product/cache/2/image/400x600/9df78eab33525d08d6e5fb8d27136e95/1/e/dba40bcd28d62297bd5639f09abd977f/chardonnay-arnaldo-caprai-2021-0-75-lt.png",
+            "Chardonnay",
+            "20",
+            "€ 16",
+          ],
+          [
+            "https://th.wine-now.asia/media/catalog/product/cache/5836d291b7d5a67e34f92ee32ee5d955/w/s/wsp1164ac_1.jpg",
+            "Prosecco",
+            "40",
+            "€ 9",
+          ],
+          [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsM_8yMiKVBvTbnTTdVsyYPmDfL0ERQoarBA&s",
+            "Cerasuolo",
+            "18",
+            "€ 15",
+          ],
+          [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOlZSlVO5RnglJ6XRDySovYciyvGQPqelB9g&s",
+            "Montepulciano",
+            "35",
+            "€ 14",
+          ],
+        ];
+
+        dati.forEach((rowData) => {
+          const row = tbody.insertRow();
+          rowData.forEach((cellData, index) => {
+            const cell = row.insertCell();
+            if (index === 0) {
+              const img = document.createElement("img");
+              img.src = cellData;
+              img.alt = "Immagine vini";
+              img.width = 50;
+              cell.appendChild(img);
+            } else {
+              cell.innerText = cellData;
+            }
+          });
+        });
+
+        myTable.appendChild(tbody);
+        tableArea.appendChild(myTable); // Usare il corretto ID dell'elemento
+      };
+
+      generateTable();
+
+      /* ESERCIZIO 12
+       Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
+    */
+
+      const addRow = function (imgSrc, nomeProdotto, quantita, prezzo) {
+        const table = document.querySelector("#tableArea table");
+        if (!table) {
+          console.log("la tabella non esiste!");
+          return;
+        }
+        const tbody = document.querySelector("tbody");
+        if (!tbody) {
+          console.log("Il body della tabella non esiste!");
+          return;
+        }
+        const row = tbody.insertRow(); //crea una riga
+        // Crea le celle per la riga
+        const cellImg = row.insertCell();
+        const img = document.createElement("img");
+        img.src = imgSrc;
+        img.alt = "Immagine prodotto";
+        img.width = 50;
+        cellImg.appendChild(img);
+
+        const cellNome = row.insertCell();
+        cellNome.innerText = nomeProdotto;
+
+        const cellQuantita = row.insertCell();
+        cellQuantita.innerText = quantita;
+
+        const cellPrezzo = row.insertCell();
+        cellPrezzo.innerText = prezzo;
+      };
+
+      // aggiunta 
+      addRow(
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu3FTL6Wjiir5rLd0i4lDf_mqZEbT0QoNSkA&s",
+        "Merlot",
+        "22",
+        "€ 18"
+      );
+
+      /* ESERCIZIO 14
+      Crea una funzione che nasconda le immagini della tabella quando eseguita
+    */
+
+      const hideAllImages = function () {
+        const images = document.querySelectorAll("#tableArea table img") //seleziono le img della tabella
+        if(images.length === 0){
+          console.log("nessuna immagine trovata!")
+          return;
+        }
+        images.forEach(img => {
+          img.style.display = "none"
+        })
+      };
+      hideAllImages()
+
+      /* EXTRA ESERCIZIO 15
+      Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
+    */
+
+      const changeColorWithRandom = function () {
+        const h2Element = document.getElementById("changeMyColor")
+        if(!h2Element) {
+          console.log("h2 non trovato!")
+          return
+        }
+        h2Element.addEventListener("click", function(){
+          const randomh2Color = "#" + Math.floor(Math.random() * 16777215).toString(16) //genera un colore casuale
+          h2Element.style.color= randomh2Color
+        })
+      };
+      changeColorWithRandom()
+    </script>
+  </body>
 </html>
